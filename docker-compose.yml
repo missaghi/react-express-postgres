@@ -1,7 +1,10 @@
 version: '3'
 services:
   postgres:
-    image: postgres:latest
+    image: postgres:11-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: dietpi
   web-app:
     build:
       context: ./client
@@ -28,5 +31,5 @@ services:
       - PGUSER=postgres
       - PGHOST=postgres
       - PGDATABASE=postgres
-      - PGPASSWORD=
+      - PGPASSWORD=dietpi
       - PGPORT=5432
